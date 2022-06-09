@@ -10,7 +10,7 @@
         <?php
             if (isset($_SESSION["membres"]["id"])){
                 echo '<li class="navbar__link four"><a href="ajouterprojet.php">Ajouter projet</a></li>';
-                echo '<li class="navbar__link four"><a href="deconnexion.php" class="negatif">Déconnexion</a></li>';
+                echo '<li class="navbar__link four"><a href="deconnexion.php" class="negatif"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>';
             }
             else {
             echo '        

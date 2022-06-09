@@ -8,6 +8,9 @@ $(document).ready(function(){
         var clientprojet = document.getElementById("clientprojet").value;
         var descriptionprojet = document.getElementById("descriptionprojet").value;
 
+        var lienprojet = document.getElementById("lienprojet").value;
+        var liengithub = document.getElementById("liengithub").value;
+
 
         let form_data = new FormData();
         let img = $("#photoprojet")[0].files;
@@ -16,6 +19,7 @@ $(document).ready(function(){
         form_data.append('clientprojet', clientprojet);
         form_data.append('descriptionprojet', descriptionprojet);
         form_data.append('lienprojet', lienprojet);
+        form_data.append('liengithub', liengithub);
 
         $.ajax({
             url : 'ajoutprojet_traitement.php',
@@ -30,10 +34,19 @@ $(document).ready(function(){
                 $('.affichemessageprojet').empty();
                 $('.affichemessageprojet').html(obj.message);
 
-            $('#nomprojet').val('');
-            $('#clientprojet').val('');
-            $('#descriptionprojet').val('');            
-            $('#photoprojet').val('');
+                if (obj.valide == "ok"){
+                    $('#nomprojet').val('');
+                    $('#clientprojet').val('');
+                    $('#descriptionprojet').val('');            
+                    $('#photoprojet').val('');
+                    $('#lienprojet').val('');
+                    $('#liengithub').val('');
+                }
+                else {
+
+                }
+
+    
             }
         });
 
