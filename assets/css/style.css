@@ -152,6 +152,7 @@ body{
     color: #fff;
     border-radius: 10px;
     font-size: 15px;
+    transition: all 1s ease-out;
 }
 
 .droitedescriptionprojetd {
@@ -176,6 +177,7 @@ body{
     color: #fff;
     border-radius: 10px;
     font-size: 15px;
+    transition: all 1s ease-out;
 }
 
 .fleche2{
