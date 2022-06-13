@@ -1,0 +1,162 @@
+.modal_jo{
+    background-color: rgba(0,0,0,0.75);
+    position: fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    z-index: 500;
+    display: flex;
+    visibility: hidden;
+    opacity: 0 ;
+    transition:0.2s;
+    /* margin-top: 100px; */
+    overflow-y: auto;
+    /* padding-top: 25px; */
+}
+
+.modal_jo.show
+{
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-content_jo{
+    background-color: #fff;
+    max-width: 40vw; /*90% de la fenetre en question*/
+    /* max-height: 80vw; 90% de la fenetre en question */
+    margin: auto;
+    flex:1;
+    position: relative;
+    border-radius: 10px;
+    }
+
+.modal-close_jo
+{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.modal-header_jo{
+    padding-left: 10px;
+    border-bottom : 1px solid #ddd;
+}
+
+.modal-body_jo{
+    padding: 10px;
+    max-height: 80vh;
+    text-align: center;
+}
+
+.modal-footer_jo{
+    padding: 10px;
+    border-top :  1px solid #ddd;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn_jo{
+    padding: 5px;
+    background-color: darkcyan;
+    color: #fff;
+    text-decoration: none;
+}
+
+.titremodal_jo
+{
+     text-align: center;
+     font-weight: bold;
+     font-size: 18px;
+     margin-top : 15px;
+}
+
+
+.titremodal_jo2
+{
+     text-align: center;
+     font-weight: bold;
+     font-size: 18px;
+     margin-top : 15px;
+}
+
+.btn-close_jo{
+    background-color: red;
+}
+
+.ficheutilisateurs_jo
+{
+    /* border: 2px solid green; */
+}
+
+.modal_ligne1_jo
+{
+    display: flex;
+    margin-top : 3px;
+}
+
+.modal_colonnegauche_jo
+{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal_colonnedroite_jo
+{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 5px;
+}
+
+.finduformulaire_jo{
+    display: flex;
+    justify-content: space-around;
+}
+
+.finduformulaire_jo .boutonediter
+{
+    font-size: 15px;
+    padding: 2px;
+    background-color: #2F93CC;
+    color: #fff;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: none;
+    margin-top : 10px;
+}
+
+.affichemessagetest2{
+    text-align: center;
+    font-weight: bold;
+}
+
+.affichemessagetest3{
+    text-align: center;
+    font-weight: bold;
+}
+
+.affichemessagetest4{
+    text-align: center;
+    font-weight: bold;
+}
+
+.green{
+    color : green;
+}
+
+.red{
+    color : red;
+}
+
+.nocase_jo
+{
+    border : 0px;
+    outline: none;
+    
+}
+
+
