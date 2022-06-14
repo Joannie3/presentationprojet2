@@ -112,3 +112,50 @@
     margin-top: 5px;
     text-decoration: none;
 }
+
+
+
+  
+@media screen and (max-width: 768.98px){
+
+    .crud {
+        width: 100%;
+      }
+
+      .titrecrud {
+        font-size: 12px;
+      }
+
+      .affichephoto {
+        height: 80px;
+      }
+
+      .titrecrud2 {
+        height: 81px;
+      }
+
+      .sstitrecrud2 {
+        font-size: 11px;
+      }
+
+      .lignecrud {
+        flex-direction: column;
+      }
+
+      .gauchecrud {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .droitecrud {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .suppression {
+        width: 29%;
+      }
+
+}

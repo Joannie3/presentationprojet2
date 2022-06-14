@@ -53,3 +53,34 @@
     height: 100%;
     font-family: 'Poppins', sans-serif;
 }
+
+@media screen and (max-width: 768.98px){
+    .ligneprojet{
+        flex-direction: column;
+
+    }
+
+    .gaucheprojet {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .droiteprojet {
+        width: 100%;
+        justify-content: center;
+
+    }
+
+    .boutoninscription {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+}
+  
+@media screen and (min-width: 768px){
+
+}
+
+
+

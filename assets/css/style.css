@@ -22,10 +22,12 @@ body{
 
 .negatif{
     color: red !important; 
+    font-weight: bold;
 }
 
 .affirmatif{
     color : green;
+    font-weight: bold;
 }
 
 /*Gestion des projets sur la page accueil*/ 

@@ -12,7 +12,7 @@ include 'assets/includes/header.php';
 
 <div class="titreprojet">
     <div class="titreplacement">Panel Administration</div>
-    <div class="titreplacement2">Permet de gérer les publications, éditions, suppression</div>
+    <div class="titreplacement2">Permet de gérer les publications, éditions, suppressions</div>
 
     <div class="fleche2">
 
@@ -27,6 +27,7 @@ include 'assets/includes/navbar.php';
 ?>
 
 <div class="container">
+
 
 
     <div class="crud">
@@ -105,13 +106,15 @@ include 'assets/includes/navbar.php';
 
             <div class="lignecrud">
                 <div class="gauchecrud"> Lien du site :</div>
-                <div class="droitecrud"><input type="text" id="liensite<?php echo $afficheprojet["id_projets"]; ?>" name="liensite<?php echo $afficheprojet["id_projets"]; ?>" value="<?php echo $afficheprojet["liensite_projets"]; ?>">
+                <div class="droitecrud liensite<?php echo $afficheprojet["id_projets"]; ?>">
+                <input type="text" id="liensite<?php echo $afficheprojet["id_projets"]; ?>" name="liensite<?php echo $afficheprojet["id_projets"]; ?>" value="<?php echo $afficheprojet["liensite_projets"]; ?>">
                 </div>
             </div>
 
             <div class="lignecrud">
                 <div class="gauchecrud"> Lien GitHub  :</div>
-                <div class="droitecrud"><input type="text" id="liengithub<?php echo $afficheprojet["id_projets"]; ?>" name="liengithub<?php echo $afficheprojet["id_projets"]; ?>" value="<?php echo $afficheprojet["liengithub_projets"]; ?>">
+                <div class="droitecrud liengithub<?php echo $afficheprojet["id_projets"]; ?>">
+                <input type="text" id="liengithub<?php echo $afficheprojet["id_projets"]; ?>" name="liengithub<?php echo $afficheprojet["id_projets"]; ?>" value="<?php echo $afficheprojet["liengithub_projets"]; ?>">
                     </div>
             </div>
 

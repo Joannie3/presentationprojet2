@@ -23,8 +23,8 @@ $erreur = "";
             // $message .= $_POST['nomprojet'];
 
 
-            if (isset( $_POST['nomprojet'], $_POST['clientprojet'], $_POST['descriptionprojet'], $_POST['liensite'], $_POST['liengithub'], $_POST['datecreation']) 
-            && !empty($_POST['nomprojet']) && !empty($_POST['clientprojet']) && !empty($_POST['descriptionprojet']) && !empty($_POST['liensite']) && !empty($_POST['liengithub']) && !empty($_POST['datecreation']))
+            if (isset( $_POST['nomprojet'], $_POST['clientprojet'], $_POST['descriptionprojet'], $_POST['datecreation']) 
+            && !empty($_POST['nomprojet']) && !empty($_POST['clientprojet']) && !empty($_POST['descriptionprojet']) && !empty($_POST['datecreation']))
             {
 
             $sqlaffichevrainom = "SELECT * FROM projets WHERE id_projets=:idproj";
@@ -35,7 +35,7 @@ $erreur = "";
             $afficheaffichevrainom = $requeteaffichevrainom->fetch();
 
             // ici on verifie d'abord le nom du projet ici on autorise min maj espace - _ 
-            $verifnom = preg_match ('@^[a-zA-Z0-9-_ ]+$@', $_POST['nomprojet']);
+            $verifnom = preg_match ('@^[a-zA-Z0-9-_ êéàèôîöïà]+$@', $_POST['nomprojet']);
 
             //si c'est bon bon il affiche 0
             $affichenomprojet = $afficheaffichevrainom["nom_projets"];
@@ -51,7 +51,7 @@ $erreur = "";
                 $affichenomprojet = $_POST['nomprojet'];
             }
 
-            $verifclient = preg_match ('@^[a-zA-Z0-9-_ ]+$@', $_POST['clientprojet']);
+            $verifclient = preg_match ('@^[a-zA-Z0-9-_ êéàèôîöïà]+$@', $_POST['clientprojet']);
 
             $afficheclientprojet = $afficheaffichevrainom["client_projets"];
             if (!$verifclient) {$erreur .= "<div class='negatif'>Nom du client : N'utiliser que des lettres et des chiifres.</div>";}
@@ -80,33 +80,88 @@ $erreur = "";
 
             $veriflienprojet = preg_match('/^(http|https):\/\/(www).([A-Z0-9][A-Z0-9_-]*(?:.[A-Z0-9][A-Z0-9_-]*)+):?(d+)?\/?/i', $_POST["liensite"]);
 
-            $afficheliensite = $afficheaffichevrainom["client_projets"];
-            if (!$veriflienprojet) {
-                $erreur .= "<div class='negatif'>Merci de respecter la règle des adresses URL pour le lien projet (http://wwww.adresse.fr)</div>";
-            } else {
+            if (($_POST['liensite'] == '') OR ($_POST['liensite'] == 'Aucun'))
+            {
+                $afficheliensite2= "Aucun";
+
                 $sqlmaj4 = "UPDATE projets SET liensite_projets=:liensite_projets WHERE id_projets=:id";
                 $requetemaj4 = $db->prepare($sqlmaj4);
                 $requetemaj4->execute(array(
                     ":id" => $_POST['valeur'],
-                    ":liensite_projets" => $_POST['liensite']
+                    ":liensite_projets" => $afficheliensite2
                 ));
-                $afficheliensite = $_POST['liensite'];
+
+                $afficheliensite3 = '
+                <input type="text" id="liensite'.$_POST['valeur'].'" name="liensite'.$_POST['valeur'].'" value="Aucun">
+                ';
+        
             }
+            else
+            {
+                $afficheliensite = $afficheaffichevrainom["client_projets"];
+                if (!$veriflienprojet) {
+                    $erreur .= "<div class='negatif'>Merci de respecter la règle des adresses URL pour le lien projet (http://wwww.adresse.fr)</div>";
+                } else {
+                    $sqlmaj4 = "UPDATE projets SET liensite_projets=:liensite_projets WHERE id_projets=:id";
+                    $requetemaj4 = $db->prepare($sqlmaj4);
+                    $requetemaj4->execute(array(
+                        ":id" => $_POST['valeur'],
+                        ":liensite_projets" => $_POST['liensite']
+                    ));
+                    $afficheliensite = $_POST['liensite'];
+
+                    $afficheliensite3 = '
+                    <input type="text" id="liensite'.$_POST['valeur'].'" name="liensite'.$_POST['valeur'].'" value="'.$afficheliensite.'">
+                    ';
+                }
+            }
+
+            // $afficheliensite3 = '
+            // <input type="text" id="liensite'.$_POST['valeur'].'" name="liensite'.$_POST['valeur'].'" value="'.$afficheaffichevrainom["liensite_projets"].'">
+            // ';
 
             $verifliengithub = preg_match('/^(http|https):\/\/(www).([A-Z0-9][A-Z0-9_-]*(?:.[A-Z0-9][A-Z0-9_-]*)+):?(d+)?\/?/i', $_POST["liengithub"]);
 
-            $afficheliengithub = $afficheaffichevrainom["liengithub_projets"];
-            if (!$verifliengithub) {
-                $erreur .= "<div class='negatif'>Merci de respecter la règle des adresses URL pour le lien projet (http://wwww.adresse.fr)</div>";
-            } else {
+            if (($_POST['liengithub'] == '') OR ($_POST['liengithub'] == 'Aucun'))
+            {
+                $afficheliengithub = 'Aucun';
+
                 $sqlmaj5 = "UPDATE projets SET liengithub_projets=:liengithub_projets WHERE id_projets=:id";
                 $requetemaj5 = $db->prepare($sqlmaj5);
                 $requetemaj5->execute(array(
                     ":id" => $_POST['valeur'],
-                    ":liengithub_projets" => $_POST['liengithub']
+                    ":liengithub_projets" => $afficheliengithub
                 ));
-                $afficheliengithub = $_POST['liensite'];
+
+                $afficheliengithub3 = '
+                <input type="text" id="liengithub'.$_POST['valeur'].'" name="liengithub'.$_POST['valeur'].'" value="Aucun">
+                ';
+            
             }
+            else{
+                // $afficheliengithub = $afficheaffichevrainom["liengithub_projets"];
+                if (!$verifliengithub) {
+                    $erreur .= "<div class='negatif'>Merci de respecter la règle des adresses URL pour le lien projet (http://wwww.adresse.fr)</div>";
+                } else {
+                    $sqlmaj5 = "UPDATE projets SET liengithub_projets=:liengithub_projets WHERE id_projets=:id";
+                    $requetemaj5 = $db->prepare($sqlmaj5);
+                    $requetemaj5->execute(array(
+                        ":id" => $_POST['valeur'],
+                        ":liengithub_projets" => $_POST['liengithub']
+                    ));
+                    $afficheliengithub = $_POST['liengithub'];
+
+                    $afficheliengithub3 = '
+                    <input type="text" id="liengithub'.$_POST['valeur'].'" name="liengithub'.$_POST['valeur'].'" 
+                    value="'.$_POST['liengithub'].'">
+                    ';
+
+                }
+            }
+
+            // $afficheliengithub3 = '
+            // <input type="text" id="liengithub'.$_POST['valeur'].'" name="liengithub'.$_POST['valeur'].'" value="'.$afficheaffichevrainom["liengithub_projets"].'">
+            // ';
 
             $sqlmaj6 = "UPDATE projets SET datecreation_projets=:datecreation_projets WHERE id_projets=:id";
             $requetemaj6 = $db->prepare($sqlmaj6);
@@ -231,7 +286,7 @@ $erreur = "";
                 }
             }else {}
 
-            $message = "<div class='affirmatif'>Projet mis à jour pour le projet N°".$_POST['valeur']."</div>";
+            $message .= "<div class='affirmatif'>Projet mis à jour pour le projet N°".$_POST['valeur']."</div>";
 
             echo json_encode(array( 
                 "id" => $_POST['valeur'],
@@ -239,8 +294,8 @@ $erreur = "";
                 "erreur" => $erreur,
                 "affichenomprojet" => $affichenomprojet,
                 "afficheclientprojet" => $afficheclientprojet,
-                "afficheliensite" => $afficheliensite,
-                "afficheliengithub" => $afficheliengithub,
+                "afficheliensite" => $afficheliensite3,
+                "afficheliengithub" => $afficheliengithub3,
                 "affichedatecreation" => $affichedatecreation,
                 "affichedatecreation2" => $affichedatecreation2,
                 "affichecreateur" => $affichecreateur,
@@ -251,7 +306,7 @@ $erreur = "";
             
             }
             else {
-                $message = "Merci de ne pas laisser de champ libre";
+                $message .= "Merci de ne pas laisser de champ libre";
             }
         }
 

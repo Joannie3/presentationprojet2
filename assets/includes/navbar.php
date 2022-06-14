@@ -25,7 +25,7 @@
                 echo '<li class="navbar__link four"><a href="crud.php">Panel Adm</a></li>';
             }
             if (isset($_SESSION["membres"]["id"])){
-                echo '<li class="navbar__link four"><a href="deconnexion.php" class="negatif"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>';
+                echo '<li class="navbar__link four"><a href="deconnexion.php" class="negatif"><i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion</a></li>';
             }
         } 
             else {
