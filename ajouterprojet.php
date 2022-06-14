@@ -6,7 +6,7 @@ if (!isset($_SESSION['membres']))
         header("Location:index.php");
 }
 else {
-    include 'assets/includes/config.php';
+include 'assets/includes/config.php';
 include 'assets/includes/header.php';
 ?>
 

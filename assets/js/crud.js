@@ -1,6 +1,6 @@
 function affiche(id) {
 
-    let titrecrud2 = document.getElementById("titrecrud2" + id);
+    // let titrecrud2 = document.getElementById("titrecrud2" + id);
     let infocrud = document.getElementById("infocrud" + id);
 
     // console.log(titrecrud2);
@@ -24,8 +24,8 @@ $(document).ready(function(){
         ee.preventDefault();
 
         let valeur = this.dataset.value; // ici c'est la valeur de mon id
-        console.log("valeur");
-        console.log(valeur);
+        // console.log("valeur");
+        // console.log(valeur);
 
     var nomprojet = document.getElementById("nomprojet"+valeur).value;
     var clientprojet = document.getElementById("clientprojet"+valeur).value;
@@ -60,7 +60,6 @@ $(document).ready(function(){
 
                 $('.messagecrud').empty();
                 $('.messagecrud').append(obj2.message);
-                $('.messagecrud').append(obj2.mess);
                 $('.messagecrud').append(obj2.erreur);
 
                 var idd = obj2.id;

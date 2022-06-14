@@ -7,8 +7,6 @@ $message = "";
 
 $erreur = "";
 
-
-
     if (isset($_GET["action"]))
     {
 
@@ -38,8 +36,6 @@ $erreur = "";
 
             // ici on verifie d'abord le nom du projet ici on autorise min maj espace - _ 
             $verifnom = preg_match ('@^[a-zA-Z0-9-_ ]+$@', $_POST['nomprojet']);
-
-
 
             //si c'est bon bon il affiche 0
             $affichenomprojet = $afficheaffichevrainom["nom_projets"];
@@ -174,7 +170,7 @@ $erreur = "";
                 // on verifie l'absence de l'extension dans les clés de $allowed ou l'absence du type mine dans les valeurs
                 if (!array_key_exists($extensioncv, $allowedcv)) {
                     // ici soit l'extension soit le type est incorrect
-                    $message .= "<div class='negatif'>Merci d'ajouter un fichier .png, .jpeg, .jpg uniquement</div>";
+                    $erreur .= "<div class='negatif'>Merci d'ajouter un fichier .png, .jpeg, .jpg uniquement</div>";
                     $valide .= "pasok";
                 } 
                 else 
@@ -182,7 +178,7 @@ $erreur = "";
                     // ici le type de fichier est correct
                     // on limite à  1MO
                     if ($filesizecv > 1024 * 1024) {
-                        $message .= "<div class='negatif'>Le document est trop volumineux (1 Mo maximum)</div>";
+                        $erreur .= "<div class='negatif'>Le document est trop volumineux (1 Mo maximum)</div>";
                         $valide .= "pasok";
                     } else {
                         // ici la taille est ok
@@ -197,7 +193,7 @@ $erreur = "";
 
                         // On deplace le fichier de tmp a upload en le renomant
                         if (!move_uploaded_file($_FILES["imageprojet"]["tmp_name"], $newfilenamecv)) {
-                            $message .= "<div class='negatif'>Une erreur est survenue lors du téléchargement du document</div>";
+                            $erreur .= "<div class='negatif'>Une erreur est survenue lors du téléchargement du document</div>";
                             $valide .= "pasok";
                         } else {
 
@@ -235,7 +231,8 @@ $erreur = "";
                 }
             }else {}
 
-            $message .= "<div class='affirmatif'>Projet mis à jour pour le projet N°".$_POST['valeur']."</div>";
+            $message = "<div class='affirmatif'>Projet mis à jour pour le projet N°".$_POST['valeur']."</div>";
+
             echo json_encode(array( 
                 "id" => $_POST['valeur'],
                 "message" => $message,
@@ -251,12 +248,10 @@ $erreur = "";
                 "afficheimage5" => $afficheimage5,
                 "afficheimage6" => $afficheimage6
             ));
-
-
             
             }
             else {
-                $message .= "Merci de ne pas laisser de champ libre";
+                $message = "Merci de ne pas laisser de champ libre";
             }
         }
 
@@ -283,8 +278,6 @@ $erreur = "";
 
             $boutonsuppr = '
             <a href="crud.php?a=s&i='.$_POST['valeur'].'" class="btn_jo" role="button" data-dismiss="dialog">Je valide la suppression du projet</a>';
-
-
 
             echo json_encode(array( 
                 "id" => $_POST['valeur'],
