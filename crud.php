@@ -30,7 +30,7 @@ include 'assets/includes/navbar.php';
 
 
     <div class="crud">
-        <div class="messagecrud">
+        <div class="messagecrud2">
             <?php
                 if(isset($_GET['a']))
                 {
@@ -148,15 +148,19 @@ include 'assets/includes/navbar.php';
             </div>
 
             <div class="lignecrud">
-            <div class="gauchecrud"> </div>
-                <div class="droitecrud"> <input type="submit" value="Modifier">
-                </div>
-               
+                <div class="gauchecrud"></div>
+                <div class="droitecrud"><input type="submit" value="Modifier"></div>
             </div>
-            
+
             </form>
 
-
+            <div class="lignecrud">
+                <div class="gauchecrud"></div>
+                <div class="droitecrud">
+                            <a href="genpdf.php?id=<?= $afficheprojet["id_projets"]; ?>"> Télécharger le pdf</a>
+                </div>
+            </div>
+            
             <div class="lignecrud">
             <div class="gauchecrud"> </div>
                 <div class="droitecrud">
@@ -199,6 +203,7 @@ include 'assets/includes/navbar.php';
 
 <script src="assets/js/crud.js"></script>
 <script src="assets/js/modal.js"></script>
+
 
 <?php
 

@@ -36,7 +36,7 @@ $requeteafficheprojet->execute();
         while ($afficheprojet = $requeteafficheprojet->fetch())
         {
 
-            $dateposte = date("Y-m-d",strtotime($afficheprojet['datecreation_projets']));
+            $dateposte = date("d-m-Y",strtotime($afficheprojet['datecreation_projets']));
 
         ?>
             <div class="cadreprojet">
@@ -69,8 +69,30 @@ $requeteafficheprojet->execute();
                             </div>
 
                             <div class="lignedesriptionprojet">
-                                <div class="gauchedescriptionprojetg"> <a href="<?php echo $afficheprojet["liensite_projets"];?>" target="_blank">Accèder au site</a> </div>
-                                <div class="droitedescriptionprojetd"> <a href="<?php echo $afficheprojet["liengithub_projets"];?>" target="_blank">Accèder au GitHub</a></div>
+                                <div class="gauchedescriptionprojetg"> 
+                                    <?php
+                                        if ($afficheprojet["liensite_projets"] == 'Aucun') {
+                                            echo ' <a>Pas de site</a>';
+                                        }
+                                        else {
+                                    ?>
+                                    <a href="<?php echo $afficheprojet["liensite_projets"];?>" target="_blank">Accèder au site</a> 
+                                    <?php
+                                        }
+                                    ?>
+                                </div>
+                                <div class="droitedescriptionprojetd"> 
+                                     <?php
+                                        if ($afficheprojet["liengithub_projets"] == 'Aucun') {
+                                            echo ' <a>Pas de GitHub</a>';
+                                        }
+                                        else {
+                                    ?>
+                                    <a href="<?php echo $afficheprojet["liengithub_projets"];?>" target="_blank">Accèder au GitHub</a>
+                                    <?php
+                                        }
+                                    ?>
+                                </div>
                             </div>
 
                         </div>
@@ -82,8 +104,6 @@ $requeteafficheprojet->execute();
         ?>
        
     </div>
-
-    <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>
 
 </div>
 
